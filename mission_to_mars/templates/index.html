@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mars Scrape</title>
+    <!-- <link rel="stylesheet" href="static/reset.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="static/style.css"> -->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class='first_fact'>
+                    <h1>
+                        <strong>Latest Mars News</strong>
+                    </h1>
+                    <p class='title'>
+                        <strong>{{scrape_mars.title}}</strong>
+                    </p>
+                    <p class='paragraph'>
+                        {{scrape_mars.paragraph}}
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+        <div class='row'>
+            <div class='col-md-8'>
+                <div class='second_fact'>
+                    <h1>
+                        <strong>
+                            Featured Mars Image
+                        </strong>
+                    </h1>
+                    <img src="{{scrape_mars.image}}" alt="Mars featured image">
+                </div>
+
+            </div>
+            
+        </div>
+
+    </div>
+    <div class ="row" id="mars-hemispheres">
+        <div class = "col-md-12">
+            <h3><center>Mars Hemispheres</center></h3>
+
+            {% for hemisphere in scrape_mars.hemispheres%}
+                <div class = "col-md-6">
+                    <div class = "thumbnail">
+                        <img src = "{{hemisphere.img}}">
+                            <h3>{{hemisphere.title}}</h3>
+                        </div>
+                    </div>
+            {% endfor %}
+                </div>
+
+        
+        </div>
+    </div>
+</body>
+
+</html>
