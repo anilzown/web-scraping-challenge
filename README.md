@@ -1,3 +1,6 @@
+
+Please Note: the ScreenShot of the Landing Page Post Scrapping.png is enclosed post scrapping the data.
+
 # Web Scraping Homework - Mission to Mars
 
 ![mission_to_mars](Images/mission_to_mars.png)
