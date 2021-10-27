@@ -17,6 +17,7 @@
             <h1>Mission to Mars</h1>
             <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
         </div>
+
         <div class='row'>
             <div class='col-md-12'>
                 <div class='first_fact'>
@@ -34,8 +35,9 @@
             </div>
 
         </div>
+        
         <div class='row'>
-            <div class='col-md-8'>
+            <div class='col-md-6'>
                 <div class='second_fact'>
                     <h1>
                         <strong>
@@ -46,25 +48,45 @@
                 </div>
 
             </div>
+
+            <!-- <div class='col-md-6'>
+                <div class='second_fact'>
+                    <h1>
+                        <strong>
+                            Mars Facts
+                        </strong>
+                    </h1>
+                        "{{scrape_mars.facts}}"
+                </div>
+
+            </div> -->
+
+            <div class='col-md-6'>
+                <div class="card">
+                    <h3>Mars Facts</h3>
+                    {{ scrape_mars.facts | safe}}
+                </div>
+            </div>
+
+          
             
         </div>
 
-    </div>
-    <div class ="row" id="mars-hemispheres">
-        <div class = "col-md-12">
-            <h3><center>Mars Hemispheres</center></h3>
+    
+        <div class ="row" id="mars-hemispheres">
+            <div class = "col-md-12">
+                <h3><center>Mars Hemispheres</center></h3>
 
-            {% for hemisphere in scrape_mars.hemispheres%}
-                <div class = "col-md-6">
-                    <div class = "thumbnail">
-                        <img src = "{{hemisphere.img}}">
-                            <h3>{{hemisphere.title}}</h3>
+                {% for hemisphere in scrape_mars.hemispheres%}
+                    <div class = "col-md-6">
+                        <div class = "thumbnail">
+                            <img src = "{{hemisphere.img}}">
+                                <h3>{{hemisphere.title}}</h3>
+                                
                         </div>
                     </div>
-            {% endfor %}
-                </div>
-
-        
+                {% endfor %}
+            </div>
         </div>
     </div>
 </body>

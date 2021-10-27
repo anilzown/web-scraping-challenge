@@ -16,7 +16,7 @@ def scrape():
         'title':title,
         'paragraph':paragraph,
         'image':image(browser),
-        'facts':str(facts()),
+        'facts':facts(),
         'hemispheres':hemispheres(browser)
     }
     return data
@@ -53,12 +53,23 @@ def image(browser):
 
 def facts():
     url="https://galaxyfacts-mars.com/"
-    mars_table=pd.read_html(url)
+    tables=pd.read_html(url)
     # * Use Pandas to convert the data to a HTML table string.
-    df=mars_table[0]
-    mars_df=df.set_index(0)
-    mars_df.to_html("mars_table.html")
-    return mars_df
+
+    # df=mars_table[0]
+    mars_fact=tables[0]
+    mars_fact=mars_fact.rename(columns={0:"Profile",1:"Value"},errors="raise")
+    mars_fact.set_index("Profile",inplace=True)
+    mars_fact
+
+    fact_table=mars_fact.to_html()
+    fact_table.replace('\n','')
+
+    # mars_df=df.set_index(0)
+    # mars_df.to_html("mars_table.html")
+    # mars_df.replace('\n','')
+    # return mars_df
+    return fact_table
 
 def hemispheres(browser):
     browser.visit('https://marshemispheres.com/')
