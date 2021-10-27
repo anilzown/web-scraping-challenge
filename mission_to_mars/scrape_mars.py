@@ -58,9 +58,13 @@ def facts():
 
     # df=mars_table[0]
     mars_fact=tables[0]
-    mars_fact=mars_fact.rename(columns={0:"Profile",1:"Value"},errors="raise")
-    mars_fact.set_index("Profile",inplace=True)
-    mars_fact
+    
+    mars_fact=mars_fact.rename(columns={0:"Description",1:"Mars",2:"Earth"},errors="raise")
+    mars_fact.set_index("Description",inplace=True)
+
+    # mars_fact.set_index(0,inplace=True)
+
+    # mars_fact
 
     fact_table=mars_fact.to_html()
     fact_table.replace('\n','')
